@@ -3,9 +3,9 @@ let score = 100; // Startpunt
 let bonusSpins = 0; // Aantal extra spins
 
 // Geluidseffecten
-const spinSound = new Audio('sounds/spin.mp3');
-const winSound = new Audio('sounds/win.mp3');
-const bonusSound = new Audio('sounds/bonus.mp3');
+const spinSound = new Audio('spin.mp3');
+const winSound = new Audio('win.mp3');
+const bonusSound = new Audio('bonus.mp3');
 
 // Functie om willekeurige symbolen te genereren voor een rol
 function getRandomSymbols() {
