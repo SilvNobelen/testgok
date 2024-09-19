@@ -1,11 +1,12 @@
 const symbols = ['🎣', '🐟', '🦈', '🐠', '🐡', '🐙', '🦑', '🏆']; // Bonus symbool
 let score = 100; // Startpunt
 let bonusSpins = 0; // Aantal extra spins
+const winChance = 0.5; // 50% winkans
 
 // Geluidseffecten
-const spinSound = new Audio('spin.mp3');
-const winSound = new Audio('win.mp3');
-const bonusSound = new Audio('bonus.mp3');
+const spinSound = new Audio('spin.mp3.wav');
+const winSound = new Audio('win.mp3.wav');
+const bonusSound = new Audio('bonus.mp3.wav');
 
 // Functie om willekeurige symbolen te genereren voor een rol
 function getRandomSymbols() {
@@ -54,21 +55,20 @@ function spinReels() {
 
 // Functie om de winst te controleren
 function checkForWinnings(reels) {
-    const winCounts = {};
-    reels.forEach(reel => {
-        const symbol = reel[0]; // Neem het eerste symbool van elke rol
-        winCounts[symbol] = (winCounts[symbol] || 0) + 1;
-    });
-
-    // Bepaal het win niveau
     let winnings = 0;
-    for (const count of Object.values(winCounts)) {
-        if (count === 3) {
-            winnings += 10; // kleine winst
-        } else if (count === 4) {
-            winnings += 50; // grotere winst
-        } else if (count === 5) {
-            winnings += 100; // jackpot
+
+    // Controleer elke rij voor winnende symbolen
+    for (let row = 0; row < 4; row++) {
+        const rowSymbols = [];
+        for (let col = 0; col < 5; col++) {
+            rowSymbols.push(reels[col][row]);
+        }
+        
+        // Controleer of alle symbolen in de rij hetzelfde zijn
+        if (rowSymbols.every(symbol => symbol === rowSymbols[0])) {
+            if (Math.random() < winChance) {
+                winnings += 20; // Bijvoorbeeld 20 punten voor een winnende rij
+            }
         }
     }
     return winnings;
@@ -79,17 +79,22 @@ function checkForBonusGame(reels) {
     const specialSymbol = '🏆'; // Bonus symbool
     let bonusCount = 0;
 
-    reels.forEach(reel => {
-        if (reel.includes(specialSymbol)) {
-            bonusCount++;
+    // Controleer op bonus symbolen in dezelfde rij
+    for (let row = 0; row < 4; row++) {
+        const rowSymbols = [];
+        for (let col = 0; col < 5; col++) {
+            rowSymbols.push(reels[col][row]);
         }
-    });
+        
+        if (rowSymbols.every(symbol => symbol === specialSymbol)) {
+            bonusCount = rowSymbols.length; // Volledige rij met bonus symbolen
+            break; // Stop bij de eerste rij met bonus symbolen
+        }
+    }
 
     // Wijs spins toe op basis van het aantal bonus symbolen
     if (bonusCount >= 3) {
-        if (bonusCount <= 6) {
-            bonusSpins += bonusCount; // Extra spins toewijzen
-        }
+        bonusSpins += bonusCount; // Extra spins toewijzen
         startBonusGame(bonusCount);
     }
 }
