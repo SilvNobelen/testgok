@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #87CEEB;
+    margin: 0;
+}
+
+.slot-machine {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reels {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.reel {
+    font-size: 48px;
+    margin: 0 10px;
+    padding: 10px;
+    border: 2px solid #333;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#resultMessage {
+    font-weight: bold;
+    margin-top: 10px;
+}
