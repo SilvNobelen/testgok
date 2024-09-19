@@ -67,6 +67,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                break; // Stop met tellen bij eerste winst
             }
         }
     }
@@ -82,6 +83,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                break; // Stop met tellen bij eerste winst
             }
         }
     }
@@ -90,7 +92,7 @@ function checkForWinnings(reels) {
     // Van linksboven naar rechtsonder
     for (let start = 0; start < 2; start++) {
         let count = 1;
-        for (let i = start; i < 4 - start; i++) {
+        for (let i = start; i < 4 - start - 1; i++) {
             if (reels[i][i + start] === reels[i + 1][i + 1 + start]) {
                 count++;
             } else {
@@ -98,6 +100,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                break; // Stop met tellen bij eerste winst
             }
         }
     }
@@ -105,7 +108,7 @@ function checkForWinnings(reels) {
     // Van rechtsboven naar linksbeneden
     for (let start = 0; start < 2; start++) {
         let count = 1;
-        for (let i = start; i < 4 - start; i++) {
+        for (let i = start; i < 4 - start - 1; i++) {
             if (reels[i][3 - i - start] === reels[i + 1][2 - i - start]) {
                 count++;
             } else {
@@ -113,6 +116,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                break; // Stop met tellen bij eerste winst
             }
         }
     }
