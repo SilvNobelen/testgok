@@ -1,4 +1,4 @@
-const symbols = ['🎣', '🐟', '🦈', '🐠', '🐡', '🐙', '🦑', '🏆']; // Bonus symbool
+const symbols = ['🎣', '🐟', '🦈', '🐠', '🐡', '🐙', '🦑', '🏆'];
 let score = 100; // Startpunt
 let bonusSpins = 0; // Aantal extra spins
 
@@ -123,6 +123,7 @@ function checkForWinnings(reels) {
 
     return winnings;
 }
+
 // Functie om bonusgame te controleren
 function checkForBonusGame(reels) {
     const specialSymbol = '🏆'; // Bonus symbool
