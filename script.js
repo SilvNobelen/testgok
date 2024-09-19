@@ -56,21 +56,69 @@ function spinReels() {
 function checkForWinnings(reels) {
     let winnings = 0;
 
-    // Controleer elke rij voor winnende symbolen
+    // Horizontale winstrijen
     for (let row = 0; row < 4; row++) {
-        const rowSymbols = [];
-        for (let col = 0; col < 5; col++) {
-            rowSymbols.push(reels[col][row]);
-        }
-        
-        // Controleer of alle symbolen in de rij hetzelfde zijn
-        if (rowSymbols.every(symbol => symbol === rowSymbols[0])) {
-            winnings += 20; // Bijvoorbeeld 20 punten voor een winnende rij
+        let count = 1; // Start met 1 voor het eerste symbool
+        for (let col = 1; col < 5; col++) {
+            if (reels[col][row] === reels[col - 1][row]) {
+                count++;
+            } else {
+                count = 1; // Reset de teller
+            }
+            if (count >= 3) {
+                winnings += 20; // Winst voor 3 of meer gelijke symbolen
+            }
         }
     }
+
+    // Verticale winstrijen
+    for (let col = 0; col < 5; col++) {
+        let count = 1; // Start met 1 voor het eerste symbool
+        for (let row = 1; row < 4; row++) {
+            if (reels[col][row] === reels[col][row - 1]) {
+                count++;
+            } else {
+                count = 1; // Reset de teller
+            }
+            if (count >= 3) {
+                winnings += 20; // Winst voor 3 of meer gelijke symbolen
+            }
+        }
+    }
+
+    // Diagonale winstrijen
+    // Van linksboven naar rechtsonder
+    for (let start = 0; start < 2; start++) {
+        let count = 1;
+        for (let i = start; i < 4 - start; i++) {
+            if (reels[i][i + start] === reels[i + 1][i + 1 + start]) {
+                count++;
+            } else {
+                count = 1; // Reset de teller
+            }
+            if (count >= 3) {
+                winnings += 20; // Winst voor 3 of meer gelijke symbolen
+            }
+        }
+    }
+
+    // Van rechtsboven naar linksbeneden
+    for (let start = 0; start < 2; start++) {
+        let count = 1;
+        for (let i = start; i < 4 - start; i++) {
+            if (reels[i][3 - i - start] === reels[i + 1][2 - i - start]) {
+                count++;
+            } else {
+                count = 1; // Reset de teller
+            }
+            if (count >= 3) {
+                winnings += 20; // Winst voor 3 of meer gelijke symbolen
+            }
+        }
+    }
+
     return winnings;
 }
-
 // Functie om bonusgame te controleren
 function checkForBonusGame(reels) {
     const specialSymbol = '🏆'; // Bonus symbool
