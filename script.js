@@ -1,7 +1,6 @@
 const symbols = ['🎣', '🐟', '🦈', '🐠', '🐡', '🐙', '🦑', '🏆']; // Bonus symbool
 let score = 100; // Startpunt
 let bonusSpins = 0; // Aantal extra spins
-const winChance = 1.0; // 50% winkans
 
 // Geluidseffecten
 const spinSound = new Audio('spin.mp3.wav');
@@ -66,9 +65,7 @@ function checkForWinnings(reels) {
         
         // Controleer of alle symbolen in de rij hetzelfde zijn
         if (rowSymbols.every(symbol => symbol === rowSymbols[0])) {
-            if (Math.random() < winChance) {
-                winnings += 20; // Bijvoorbeeld 20 punten voor een winnende rij
-            }
+            winnings += 20; // Bijvoorbeeld 20 punten voor een winnende rij
         }
     }
     return winnings;
