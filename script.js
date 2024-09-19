@@ -1,7 +1,7 @@
 const symbols = ['🎣', '🐟', '🦈', '🐠', '🐡', '🐙', '🦑', '🏆']; // Bonus symbool
 let score = 100; // Startpunt
 let bonusSpins = 0; // Aantal extra spins
-const winChance = 0.5; // 50% winkans
+const winChance = 1.0; // 50% winkans
 
 // Geluidseffecten
 const spinSound = new Audio('spin.mp3.wav');
