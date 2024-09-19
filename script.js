@@ -25,4 +25,11 @@ function spinReels() {
     document.getElementById('reel2').innerHTML = reel2Symbols.map(symbol => `<div>${symbol}</div>`).join('');
     document.getElementById('reel3').innerHTML = reel3Symbols.map(symbol => `<div>${symbol}</div>`).join('');
     document.getElementById('reel4').innerHTML = reel4Symbols.map(symbol => `<div>${symbol}</div>`).join('');
-    document.getElementById('
+    document.getElementById('reel5').innerHTML = reel5Symbols.map(symbol => `<div>${symbol}</div>`).join('');
+
+    // Toon het resultaat (je kunt hier ook winstlogica toevoegen)
+    document.getElementById('resultMessage').textContent = "Je hebt gedraaid!";
+}
+
+// Eventlistener voor de Spin knop
+document.getElementById('spinButton').addEventListener('click', spinReels);
