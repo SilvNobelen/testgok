@@ -55,6 +55,7 @@ function spinReels() {
 // Functie om de winst te controleren
 function checkForWinnings(reels) {
     let winnings = 0;
+    let winningLines = []; // Array om winlijnen op te slaan
 
     // Horizontale winstrijen
     for (let row = 0; row < 4; row++) {
@@ -67,6 +68,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                winningLines.push(`row${row}`); // Voeg winlijn toe
                 break; // Stop met tellen bij eerste winst
             }
         }
@@ -83,6 +85,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                winningLines.push(`col${col}`); // Voeg winlijn toe
                 break; // Stop met tellen bij eerste winst
             }
         }
@@ -100,6 +103,7 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                winningLines.push(`diag1`); // Voeg winlijn toe
                 break; // Stop met tellen bij eerste winst
             }
         }
@@ -116,12 +120,29 @@ function checkForWinnings(reels) {
             }
             if (count >= 3) {
                 winnings += 20; // Winst voor 3 of meer gelijke symbolen
+                winningLines.push(`diag2`); // Voeg winlijn toe
                 break; // Stop met tellen bij eerste winst
             }
         }
     }
 
+    // Licht de winlijnen uit
+    if (winningLines.length > 0) {
+        highlightWinLine(winningLines);
+    }
+
     return winnings;
+}
+
+// Functie om de winlijn uit te lichten
+function highlightWinLine(lines) {
+    lines.forEach(line => {
+        const element = document.getElementById(line);
+        element.classList.add('highlight'); // Voeg de highlight klasse toe
+        setTimeout(() => {
+            element.classList.remove('highlight'); // Verwijder de highlight klasse na 5 seconden
+        }, 5000);
+    });
 }
 
 // Functie om bonusgame te controleren
