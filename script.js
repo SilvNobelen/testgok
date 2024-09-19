@@ -1,4 +1,4 @@
-const symbols = ['🎣', '🐟', '🦈', '🐠', '🐡', '🐙', '🦑'];
+const symbols = ['🍑', '🍒', '🦨', '🍆', '🐭', '🍔', '🧀'];
 
 // Functie om willekeurige symbolen te genereren voor een rol
 function getRandomSymbols() {
