@@ -29,3 +29,8 @@ body {
     justify-content: center;
     font-size: 24px;
 }
+
+.highlight {
+    background-color: yellow; /* Of elke andere kleur die je wilt */
+    transition: background-color 0.5s ease;
+}
