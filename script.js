@@ -1,4 +1,5 @@
 const symbols = ['🍑', '🍒', '🦨', '🍆', '🐭', '🍔', '🧀'];
+let score = 100; // Startpunt
 
 // Functie om willekeurige symbolen te genereren voor een rol
 function getRandomSymbols() {
@@ -12,6 +13,18 @@ function getRandomSymbols() {
 
 // Functie om de rollen te draaien
 function spinReels() {
+    const bet = parseInt(document.getElementById('betInput').value);
+
+    // Controleer of de inzet geldig is
+    if (isNaN(bet) || bet <= 0 || bet > score) {
+        alert("Voer een geldige inzet in!");
+        return;
+    }
+
+    // Verminder de score met de inzet
+    score -= bet;
+    document.getElementById('score').textContent = score;
+
     const reels = [];
     for (let i = 0; i < 5; i++) {
         reels.push(getRandomSymbols());
@@ -20,6 +33,7 @@ function spinReels() {
 
     // Controleer op winst
     const winnings = checkForWinnings(reels);
+    score += winnings; // Voeg de gewonnen punten toe aan de score
     displayResult(winnings);
 }
 
@@ -49,6 +63,7 @@ function checkForWinnings(reels) {
 function displayResult(winnings) {
     const resultMessage = winnings > 0 ? `Je hebt gewonnen: ${winnings} punten!` : "Helaas, probeer het opnieuw!";
     document.getElementById('resultMessage').textContent = resultMessage;
+    document.getElementById('score').textContent = score; // Toon de bijgewerkte score
 }
 
 // Eventlistener voor de Spin knop
