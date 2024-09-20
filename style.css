@@ -31,25 +31,25 @@ body {
 .reels {
     display: flex;
     justify-content: space-between;
-    height: 200px; /* Bepaalt de hoogte van de reels */
+    height: 300px; /* Verhoogde hoogte voor 3 symbolen */
     margin-bottom: 20px;
 }
 
 .reel {
     width: 18%;
     background-color: #ffffff;
-    height: 100%; /* Zorg dat elke reel genoeg hoogte heeft */
+    height: 100%; 
     border: 3px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* De symbolen verticaal stapelen */
-    justify-content: flex-start; /* Begin bovenaan met de symbolen */
+    flex-direction: column; /* Stacked symbols */
+    justify-content: flex-start; 
 }
 
 .reel img {
-    width: 100%; /* Elke afbeelding vult de breedte van de reel */
-    height: auto; /* Pas de hoogte aan de breedte aan */
+    width: 100%;
+    height: 33.33%; /* Verdeelt de symbolen in 3 */
     display: block;
 }
 
