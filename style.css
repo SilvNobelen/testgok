@@ -102,13 +102,10 @@ body {
 
 /* Animatie voor de reels */
 @keyframes spin {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
 }
+
 
 /* Stijl voor animatie (bijvoorbeeld als de rollen draaien) */
 .spin-animation {
