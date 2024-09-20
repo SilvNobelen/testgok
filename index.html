@@ -3,26 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slot Machine</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Big Bass Style Slot Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #003366;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .game-container {
+            background: url('background.jpg') no-repeat center center/cover;
+            width: 1024px;
+            height: 600px;
+            position: relative;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5);
+        }
+        .header {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+        }
+        .reels {
+            position: absolute;
+            top: 120px;
+            left: 50px;
+            width: 90%;
+            height: 60%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .reel {
+            width: 18%;
+            background-color: #ffffff;
+            height: 100%;
+            border: 3px solid #ccc;
+            border-radius: 5px;
+        }
+        .reel img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 50px;
+            width: 90%;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            color: #000;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .credits, .bet {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <div class="slot-machine">
-        <h1>Slot Machine: Big Fish Theme</h1>
-        <div class="reels">
-            <div class="reel" id="reel1"></div>
-            <div class="reel" id="reel2"></div>
-            <div class="reel" id="reel3"></div>
-            <div class="reel" id="reel4"></div>
-            <div class="reel" id="reel5"></div>
-        </div>
-        <input type="number" id="betInput" placeholder="Voer inzet in" min="1" />
-        <button id="spinButton">Spin</button>
-        <p id="resultMessage"></p>
-        <p id="scoreMessage">Huidige score: <span id="score">100</span></p>
-        <p id="bonusSpinsMessage"></p>
+
+<div class="game-container">
+    <div class="header">
+        Big Bass Bonanza - Keeping it Reel
     </div>
 
-    <script src="script.js"></script>
+    <div class="reels">
+        <div class="reel">
+            <!-- Add images for reel items -->
+            <img src="symbol1.png" alt="Symbol">
+        </div>
+        <div class="reel">
+            <img src="symbol2.png" alt="Symbol">
+        </div>
+        <div class="reel">
+            <img src="symbol3.png" alt="Symbol">
+        </div>
+        <div class="reel">
+            <img src="symbol4.png" alt="Symbol">
+        </div>
+        <div class="reel">
+            <img src="symbol5.png" alt="Symbol">
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="credits">
+            Credit: $10,000.00
+        </div>
+        <div class="bet">
+            Bet: $250.00
+        </div>
+        <div class="button">
+            SPIN
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
